@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.demo.mapper.RoleMapper">
+
+    <resultMap type="com.example.demo.pojo.Role" id="RoleResult">
+        <id property="id" column="id" />
+        <result property="type" column="type" />
+
+
+    </resultMap>
+
+    <select id="GetRoleList" parameterType="String" resultMap="RoleResult">
+		select * from role where id=#{id}
+	</select>
+
+    <!--<select id="getUserByUserName" parameterType="String" resultMap="UserResult">
+        select * from user where username=#{username}
+    </select>-->
+
+    <!--	<select id="getTotalCount" resultType="java.lang.Integer">
+            select count(*) as total from user as u where status=2 and is_system=0
+            <if skip=' !keyword.equals("") '>
+                and u.${field} like '${keyword}'
+            </if>
+        </select>-->
+    <!--
+        <select id="getUsersByKeywordAndFieldAndPage" resultType="User">
+            select user_id as userId,username,password,is_admin as
+            isAdmin,is_system as isSystem,d.department_id as
+            departmentId,r.role_id as roleId,
+            is_male as isMale,mobile,address,age,tel,id_num as
+            idNum,email,qq,hobby,education,card_num as
+            cardNum,nation,marry,u.status,u.remark,
+            u.create_time as createTime,u.creater,u.update_time as
+            updateTime,u.updater,d.department_name as departmentName,r.role_name
+            as roleName from user as u left join department as d on
+            (u.department_id = d.department_id) left join role as r on
+            (u.role_id=r.role_id) where u.status=2 and u.is_system=0
+
+            <if skip=' !keyword.equals("") '>
+
+                and u.${field} like '%${keyword}%'
+            </if>
+            limit #{pageNo},#{pageSize}
+        </select>-->
+
+    <!--
+        <insert id="addUser" parameterType="User" useGeneratedKeys="true"
+            keyProperty="userId">
+            INSERT INTO user (username, password, department_id, role_id, is_male,
+            mobile,
+            address, age, tel, id_num, email, qq,
+            hobby, education, card_num, nation, marry, status,
+            remark, create_time, creater,is_system
+            ) VALUES (#{username}, #{password}, #{departmentId}, #{roleId},
+            #{isMale}, #{mobile},
+            #{address}, #{age}, #{tel}, #{idNum}, #{email}, #{qq},
+            #{hobby}, #{education}, #{cardNum}, #{nation}, #{marry}, #{status},
+            #{remark}, #{createTime}, #{creater},#{isSystem})
+        </insert>
+
+
+
+        <select id="getUserById" parameterType="java.lang.Integer"
+            resultType="User">
+            select * from user where user_id=${userId}
+
+        </select>
+
+        <update id="updateUser" parameterType="User">
+            update user set
+            password=#{password},department_id=${departmentId},role_id=${roleId},is_male=#{isMale},address=#{address}
+            ,age=${age},tel=#{tel},id_num=#{idNum},email=#{email},qq=#{qq},hobby=#{hobby},education=${education},card_num=#{cardNum},nation=#{nation},marry=${marry},status=${status}
+            ,remark=#{remark},create_time=#{createTime},creater=${creater},mobile=#{mobile},update_time=#{updateTime}
+            where user_id=${userId}
+        </update>
+
+        <delete id="removeUserById" parameterType="java.lang.Integer">
+            delete from user where user_id=${userId}
+        </delete>-->
+</mapper>
